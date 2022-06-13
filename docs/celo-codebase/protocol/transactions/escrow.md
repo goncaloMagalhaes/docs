@@ -2,15 +2,34 @@
 title: Celo's Escrow Contract
 description: Introduction to the Celo Escrow contract and how to use it to withdraw, revoke, and reclaim funds.
 ---
-# Escrow 
 
-Introduction to the Celo Escrow contract and how to use it to withdraw, revoke, and reclaim funds.
+# Escrow
+
+A high-level introduction to the [Escrow smart contract](https://github.com/celo-org/celo-monorepo/blob/6b6ce69fde8f4868b54abd8dd267e5313c3ddedd/packages/protocol/contracts/identity/Escrow.sol) and its functionality.
+
+<!-- to withdraw, revoke, and reclaim funds. -->
 
 ___
 
-## What is the Escrow Contract?
+## Sequences
 
-The `Escrow` contract utilizes Celo’s Lightweight identity feature to allow users to _send payments to other users who don’t yet have a public/private key pair or an address_. These payments are stored in this contract itself and can be either withdrawn by the intended recipient or reclaimed by the sender. This functionality supports _both_ versions of Celo’s lightweight identity: identifier-based \(such as a phone number to address mapping\) and privacy-based. This gives applications that intend to use this contract some flexibility in deciding which version of identity they prefer to use.
+
+
+
+## What is the Escrow contract?
+
+The Escrow smart contract ([escrow.sol](https://github.com/celo-org/celo-monorepo/blob/6b6ce69fde8f4868b54abd8dd267e5313c3ddedd/packages/protocol/contracts/identity/Escrow.sol)) is a [Core Contract](../../../learn/celo-stack#celo-core-contracts) on Celo that lets users:
+
+1. deposit ERC-20 <!-- Check it's only ERC-20 token --> tokens,
+2. specify a recipient that can claim those tokens, and
+3. reclaim
+
+The contract enables a variety of use cases such as:
+
+* sending payments to users that do not yet have a Celo address (more on this below)
+* locking funds 
+
+utilizes Celo’s Lightweight identity feature to allow users to _send payments to other users who don’t yet have a public/private key pair or an address_. These payments are stored in this contract itself and can be either withdrawn by the intended recipient or reclaimed by the sender. This functionality supports _both_ versions of Celo’s lightweight identity: identifier-based \(such as a phone number to address mapping\) and privacy-based. This gives applications that intend to use this contract some flexibility in deciding which version of identity they prefer to use.
 
 ## How it works
 
